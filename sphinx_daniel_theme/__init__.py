@@ -16,4 +16,4 @@ def setup(app):
     # add_html_theme is new in Sphinx 1.6+
     if hasattr(app, 'add_html_theme'):
         theme_path = get_html_theme_path()[0]
-        app.add_html_theme('bootstrap', os.path.join(theme_path, 'bootstrap'))
+        app.add_html_theme('daniel', os.path.join(theme_path, 'daniel'))

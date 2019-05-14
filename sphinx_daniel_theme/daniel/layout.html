@@ -1,21 +1,25 @@
 {% extends "basic/layout.html" %}
 
-{% if theme_bootstrap_version == "3" %}
-  {% set bootstrap_version, navbar_version = "3.3.7", "" %}
-  {% set bs_span_prefix = "col-md-" %}
-{% else %}
-  {% set bootstrap_version, navbar_version = "2.3.2", "-2" %}
-  {% set bs_span_prefix = "span" %}
-{% endif %}
+{# Custom CSS overrides #}
+{% set bootswatch_css_custom = [
+'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+'https://www.code.daniel-williams.co.uk/css/main.css',
+'https://daniel-williams.co.uk/css/main.css',
+'//fonts.googleapis.com/css?family=Lato:300,500'] %}
 
 {% set script_files = script_files + [
-    '_static/js/jquery-1.11.0.min.js',
-    '_static/js/jquery-fix.js',
-    '_static/bootstrap-' + bootstrap_version + '/js/bootstrap.min.js',
-    '_static/bootstrap-sphinx.js'
-  ]
-%}
+"https://code.jquery.com/jquery-3.3.1.slim.min.js",
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+] %}
 
+{%- macro bsidebar() %}
+{%- endmacro %}
+
+{% set css_files = bootswatch_css_custom  %} 
+
+
+{%- set bs_span_prefix = "col-md-" %}
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and sidebars %}
 
 {%- set bs_content_width = render_sidebar and "9" or "12"%}
@@ -24,71 +28,53 @@
 <!DOCTYPE html>
 {%- endblock %}
 
-{# Sidebar: Rework into our Bootstrap nav section. #}
-{% macro navBar() %}
-{% include "navbar" + navbar_version + ".html" %}
-{% endmacro %}
-
-{% if theme_bootstrap_version == "3" %}
-  {%- macro bsidebar() %}
-      {%- if render_sidebar %}
-      <div class="{{ bs_span_prefix }}3">
-        <div id="sidebar" class="bs-sidenav" role="complementary">
-          {%- for sidebartemplate in sidebars %}
-            {%- include sidebartemplate %}
-          {%- endfor %}
-        </div>
-      </div>
-      {%- endif %}
-  {%- endmacro %}
-{% else %}
-  {%- macro bsidebar() %}
-      {%- if render_sidebar %}
-      <div class="{{ bs_span_prefix }}3">
-        <div id="sidebar" class="bs-sidenav well" data-spy="affix">
-          {%- for sidebartemplate in sidebars %}
-            {%- include sidebartemplate %}
-          {%- endfor %}
-        </div>
-      </div>
-      {%- endif %}
-  {%- endmacro %}
-{% endif %}
-
 {%- block extrahead %}
 <meta charset='utf-8'>
+
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+
 {% endblock %}
 
-{# Silence the sidebar's, relbar's #}
+{# Silence the sidebars, relbars #}
 {% block header %}{% endblock %}
 {% block relbar1 %}{% endblock %}
 {% block relbar2 %}{% endblock %}
 {% block sidebarsourcelink %}{% endblock %}
 
 {%- block content %}
-{{ navBar() }}
-<div class="container">
+
+{% include "navbar.html" %}
+
+<div class="container-fluid">
   <div class="row">
-    {%- block sidebar1 %}{{ bsidebar() }}{% endblock %}
-    <div class="{{ bs_span_prefix }}{{ bs_content_width }} content">
+    <div class="{{ bs_span_prefix}}2 toc-left">
+      {% include "sidebar-left.html" %}
+    </div>
+    
+    <div class="{{ bs_span_prefix }}8 content">
       {% block body %}{% endblock %}
     </div>
-    {% block sidebar2 %} {# possible location for sidebar #} {% endblock %}
+
+    <div class="{{ bs_span_prefix}}2 toc-right">
+      {%- block sidebar1 %}
+      {% include "sidebar-right.html" %}
+      {% endblock %}
+    </div>
   </div>
-</div>
-{%- endblock %}
+  
+  {%- endblock %}
 
 {%- block footer %}
 <footer class="footer">
-  <div class="container">
+  <div class="container-fluid">
+
     <p class="pull-right">
       <a href="#">Back to top</a>
       {% if theme_source_link_position == "footer" %}
         <br/>
-        {% include "sourcelink.html" %}
+        
       {% endif %}
     </p>
     <p>
@@ -106,6 +92,9 @@
       {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
     {%- endif %}
     </p>
-  </div>
+  </div> 
 </footer>
+
+
+    </div>
 {%- endblock %}

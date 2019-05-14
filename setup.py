@@ -2,7 +2,7 @@
 import os
 from setuptools import setup, find_packages
 
-from sphinx_bootstrap_theme import __version__
+from sphinx_daniel_theme import __version__
 
 ###############################################################################
 # Environment and Packages.
@@ -11,7 +11,7 @@ from sphinx_bootstrap_theme import __version__
 os.environ['COPYFILE_DISABLE'] = "true"
 
 # Packages.
-MOD_NAME = "sphinx_bootstrap_theme"
+MOD_NAME = "sphinx_daniel_theme"
 PKGS = [x for x in find_packages() if x.split('.')[0] == MOD_NAME]
 
 
@@ -35,15 +35,15 @@ def read_file(name):
 # Setup.
 ###############################################################################
 setup(
-    name="sphinx-bootstrap-theme",
+    name="sphinx-daniel-theme",
     version=__version__,
     use_2to3=True,
-    description="Sphinx Bootstrap Theme.",
+    description="Sphinx Bootstrap Theme adapted for Daniel.",
     long_description=read_file("README"),
-    url="http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html",
+    url="https://code.daniel-williams.co.uk",
 
-    author="Ryan Roemer",
-    author_email="ryan@loose-bits.com",
+    author="Daniel Williams",
+    author_email="mail@daniel-williams.co.uk",
 
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -64,7 +64,7 @@ setup(
     ],
     entry_points = {
         'sphinx.html_themes': [
-            'bootstrap = sphinx_bootstrap_theme',
+            'daniel = sphinx_daniel_theme',
         ]
     },
     packages=PKGS,

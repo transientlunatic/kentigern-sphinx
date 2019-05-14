@@ -9,26 +9,8 @@
  * Imports to aggregate everything together.
  */
 
-@import url("./basic.css");
+// @import url("./basic.css");
 
-{% if theme_bootstrap_version == "3" %}
-  {% set bootstrap_version, bootstrap_additional_css = "3.3.7", "theme" %}
-{% else %}
-  {% set bootstrap_version, bootstrap_additional_css = "2.3.2", "responsive" %}
-{% endif %}
-
-{% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
-  {# BS2 needs "bootstrap-responsive.css". BS3 doesn't. #}
-  {% if theme_bootstrap_version == "3" %}
-    @import url("{{ './bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css' }}");
-  {% else %}
-    @import url("{{ './bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css' }}");
-    @import url("{{ './bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css' }}");
-  {% endif %}
-{% else %}
-    @import url("{{ './bootstrap-' + bootstrap_version + '/css/bootstrap.min.css' }}");
-    @import url("{{ './bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css' }}");
-{% endif %}
 
 /*
  * Styles
@@ -300,3 +282,138 @@ table.field-list {
   }
 }
 {% endif %}
+
+a.headerlink { display: none;}
+h1:hover > a.headerlink {display: inline;}
+dl.method>dd { padding-left: 2rem; */
+margin-bottom: 3rem; }
+
+ul.dropdown-menu li { padding: .5rem;
+list-style: none;
+}
+ul.dropdown-menu li * { color: black;
+}
+ul.dropdown-menu li:hover { background: #f7f5fa;
+}
+ul.dropdown-menu li a:hover{ text-decoration: none;
+}
+.content ul, ol { margin-left: 3rem; }
+.content ul  ul { margin-left: 1rem; }
+ul.dropdown-menu ul { margin-left: 0; }
+pre { margin-bottom: 3rem;
+border-left: 3px #E24A33 solid;
+padding: 1rem;
+background: #EEEEEE;
+}
+.highlight { margin-left: 0; }
+
+
+.section-nav { 
+position: fixed;
+margin-left: -50px;
+border-left: 1px solid #eee;
+}
+.content {
+	 padding: 3%;
+	 }
+.toc-left {
+    border: none;
+    border-right: 1px solid #eee;
+    background-color: white;
+    margin-top: 2rem;
+    padding-right: 0.5rem !important;
+}
+.toc-left li {
+    display: block;
+}
+.toc-left h2 {
+    color: #aaa;
+    font-size: 1.1rem;
+}
+a.dropdown-item { 
+    color: black; 
+}
+.toc-left a {
+    color: gray;
+    font-size: 0.875 rem;
+}
+.toc-left ul {
+    padding-left: 1em;
+}
+.toc-right {
+    margin-top: 2rem;
+    border: none;
+    border-left: 1px solid #eee;
+    background-color: white;
+}
+.toc-right li {
+    display: block;
+}
+.toc-right a {
+    color: gray;
+    font-size: 0.875 rem;
+}
+.toc-title {
+    display: none;
+}
+.toc-right ul {
+    padding-left: -2rem;
+}
+.section-nav  li {
+    display: block;
+}
+.head {
+    margin-top: 2rem;
+}
+.navbar {
+    font-weight: 500;
+    
+}
+
+table.docutils {
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+table.docutils * {
+    border: none;
+}
+
+table.docutils tr {
+    border-bottom: 1px #CCCCCC solid;
+}
+
+table.docutils td {
+    padding: 10px;
+}
+
+dl.class {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+dl.class dt {
+    background: #28a745;
+    padding: 5px;
+    color: white;
+}
+
+dl.class dt code {
+    color: inherit;
+}
+
+dl.class dt .viewcode-link {
+    color: white;
+    float: right;
+}
+
+td.field-body dt {
+    background: white;
+    color: black;
+}
+
+
+p.rubric {
+    margin-bottom: 0px;
+    font-size: 120%;
+}
