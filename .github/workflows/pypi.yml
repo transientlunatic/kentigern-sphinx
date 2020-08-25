@@ -23,6 +23,7 @@ jobs:
     - name: Build wheel
       run: |
         pip install -r requirements.txt
+        pip install wheel
         python setup.py bdist_wheel 
         
     - name: pypi-publish
