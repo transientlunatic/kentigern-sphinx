@@ -2,7 +2,7 @@
 import os
 from setuptools import setup, find_packages
 
-from sphinx_daniel_theme import __version__
+from kentigern import __version__
 
 ###############################################################################
 # Environment and Packages.
@@ -11,7 +11,7 @@ from sphinx_daniel_theme import __version__
 os.environ['COPYFILE_DISABLE'] = "true"
 
 # Packages.
-MOD_NAME = "sphinx_daniel_theme"
+MOD_NAME = "kentigern"
 PKGS = [x for x in find_packages() if x.split('.')[0] == MOD_NAME]
 
 
@@ -35,12 +35,12 @@ def read_file(name):
 # Setup.
 ###############################################################################
 setup(
-    name="sphinx-daniel-theme",
+    name="kentigern",
     version=__version__,
     use_2to3=True,
-    description="Sphinx Bootstrap Theme adapted for Daniel.",
+    description="A Sphinx Bootstrap derived Theme.",
     long_description=read_file("README"),
-    url="https://code.daniel-williams.co.uk",
+    url="https://code.daniel-williams.co.uk/kentigern",
 
     author="Daniel Williams",
     author_email="mail@daniel-williams.co.uk",
@@ -64,7 +64,7 @@ setup(
     ],
     entry_points = {
         'sphinx.html_themes': [
-            'daniel = sphinx_daniel_theme',
+            'kentigern = kentigern',
         ]
     },
     packages=PKGS,

@@ -2,14 +2,10 @@
 
 {# Custom CSS overrides #}
 {% set bootswatch_css_custom = [
-'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css',
 '//fonts.googleapis.com/css?family=Lato:300,500'] %}
 
-{% set script_files = script_files + [
-"https://code.jquery.com/jquery-3.3.1.slim.min.js",
-"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",
-"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
-] %}
+
 
 {%- macro bsidebar() %}
 {%- endmacro %}
@@ -51,7 +47,7 @@
       {% include "sidebar-left.html" %}
     </div>
     
-    <div class="{{ bs_span_prefix }}8 content">
+    <div class="{{ bs_span_prefix }}8 content"       data-spy="scroll" data-target="#localtoc" data-offset="0" >
       {% block body %}{% endblock %}
     </div>
 
@@ -65,34 +61,35 @@
   {%- endblock %}
 
 {%- block footer %}
-<footer class="footer">
-  <div class="container-fluid">
-
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      {% if theme_source_link_position == "footer" %}
+  <footer class="footer">
+    <div class="container-fluid">
+      
+      <p class="pull-right">
+	<a href="#">Back to top</a>
+	{% if theme_source_link_position == "footer" %}
         <br/>
         
-      {% endif %}
-    </p>
-    <p>
-    {%- if show_copyright %}
-      {%- if hasdoc('copyright') %}
+	{% endif %}
+      </p>
+      <p>
+	{%- if show_copyright %}
+	{%- if hasdoc('copyright') %}
         {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
-      {%- else %}
+	{%- else %}
         {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
-      {%- endif %}
-    {%- endif %}
-    {%- if last_updated %}
-      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
-    {%- endif %}
-    {%- if show_sphinx %}
-      {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
-    {%- endif %}
-    </p>
-  </div> 
-</footer>
+	{%- endif %}
+	{%- endif %}
+	{%- if last_updated %}
+	{% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
+	{%- endif %}
+	{%- if show_sphinx %}
+	{% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
+	{%- endif %}
+      </p>
+    </div> 
+  </footer>
 
-
-    </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 {%- endblock %}

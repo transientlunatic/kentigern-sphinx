@@ -10,10 +10,8 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- <span class="navbar-text navbar-version"><b>{{ version|e }}</b></span> -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
       {% if theme_navbar_links %}
       {%- for link in theme_navbar_links %}
       <li class="nav-item">
@@ -21,34 +19,49 @@
       </li>
       {%- endfor %}
       {% endif %}
+
+      {#
       {% block navbartoc %}
       {% include "globaltoc.html" %}
-      <!-- {% if theme_navbar_pagenav %} -->
-      <!-- {% include "navbartoc.html" %} -->
-      <!-- {% endif %} -->
       {% endblock %}
-      {% if theme_navbar_sidebarrel %}
-      {% block sidebarrel %}
-      {% include "relations.html" %}
-      {% endblock %}
-      {% endif %}
+      #}
+      
       {% block navbarextra %}
       {% endblock %}
-      <!-- {% if theme_source_link_position == "nav" %} -->
-      <!-- <li class="hidden-sm">{% include "sourcelink.html" %}</li> -->
-      <!-- {% endif %} -->
     </ul>
-
-    <div class="btn-group dropdown">
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	{{ version|e }}
-      </button>
-      <div class="dropdown-menu">
-	{%- for name, url in versions %}
-	<a class="dropdown-item" href="{{ url }}">{{ name }}</a>
-	{%- endfor %}
-      </div>
-    </div>
     
+    <li class="navbar-nav dropdown">
+      <a role="button"
+	 {% if versions|length>0 %}
+	 data-target="#"
+	class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+	{% else %}
+	class="nav-link"
+	{% endif %}
+	>
+	{{ version |e }} {{ release | e }}
+      </a>
+      {% if versions|length>0 %}
+      <ul class="dropdown-menu">
+	{%- for name, url in versions %}
+	<li class="dropdown-item"><a href="{{ url }}">{{ name }}</a></li>
+	{%- endfor %}
+      </ul>
+      {% endif %}
   </div>
 </nav>
+
+{# Add document navigation on a second nav below the main one #}
+{% if theme_navbar_sidebarrel %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  
+{% block sidebarrel %}
+   {% include "relations.html" %}
+{% endblock %}
+
+{% if theme_source_link_position == "nav" %}
+    {% include "sourcelink.html" %}
+{% endif %}
+</nav>
+{% endif %}

@@ -1,6 +1,6 @@
-========================
- Sphinx Bootstrap Theme
-========================
+=========
+Kentigern
+=========
 
 This Sphinx_ theme_ integrates the Bootstrap_ CSS / JavaScript
 framework with various layout options, hierarchical menu navigation,
@@ -14,57 +14,24 @@ and can use any number of different Bootswatch_ CSS themes.
 .. _GitHub repository: https://github.com/ryan-roemer/sphinx-bootstrap-theme
 
 
-Introduction and Demos
-======================
-The theme is introduced and discussed in the following posts:
-
-* 12/09/2011 - `Twitter Bootstrap Theme for Sphinx <http://loose-bits.com/2011/12/09/sphinx-twitter-bootstrap-theme.html>`_
-* 11/19/2012 - `Sphinx Bootstrap Theme Updates - Mobile, Dropdowns, and More <http://loose-bits.com/2012/11/19/sphinx-bootstrap-theme-updates.html>`_
-* 2/12/2013 - `Sphinx Bootstrap Theme 0.1.6 - Bootstrap and Other Updates <http://loose-bits.com/2013/02/12/sphinx-bootstrap-theme-updates.html>`_
-* 4/10/2013 - `Sphinx Bootstrap Theme 0.2.0 - Now with Bootswatch! <http://loose-bits.com/2013/04/10/sphinx-bootstrap-theme-bootswatch.html>`_
-* 9/8/2013 - `Sphinx Bootstrap Theme 0.3.0 - Bootstrap v3 and more! <http://loose-bits.com/2013/09/08/sphinx-bootstrap-theme-bootstrap-3.html>`_
-
-Examples of the theme in use for some public projects:
-
-* `Sphinx Bootstrap Theme`_: This project, with the theme option
-  ``'bootswatch_theme': "sandstone"`` to use the "Sandstone_" Bootswatch_ theme.
-* `Django Cloud Browser`_: A Django reusable app for browsing cloud
-  datastores (e.g., Amazon Web Services S3).
-* `seaborn`_: A statistical data visualization library.
-
-The theme demo website also includes an `examples page`_ for some useful
-illustrations of getting Sphinx to play nicely with Bootstrap (also take a
-look at the `examples source`_ for the underlying reStructuredText).
-
-.. _Bootswatch: http://bootswatch.com
-.. _United: http://bootswatch.com/united
-.. _Flatly: http://bootswatch.com/flatly
-.. _Sandstone: http://bootswatch.com/sandstone
-.. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
-.. _examples page: http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html
-.. _examples source: http://ryan-roemer.github.com/sphinx-bootstrap-theme/_sources/examples.rst.txt
-.. _Django Cloud Browser: http://ryan-roemer.github.com/django-cloud-browser
-.. _seaborn: http://seaborn.pydata.org
-
-
 Installation
 ============
 Installation from PyPI_ is fairly straightforward:
 
 1. Install the package::
 
-      $ pip install sphinx_bootstrap_theme
+      $ pip install kentigern
 
 2. Edit the "conf.py" configuration file to point to the bootstrap theme::
 
       # At the top.
-      import sphinx_bootstrap_theme
+      import kentigern
 
       # ...
 
       # Activate the theme.
-      html_theme = 'bootstrap'
-      html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+      html_theme = 'kentigern'
+      html_theme_path = kentigern.get_html_theme_path()
 
 
 Customization
@@ -134,23 +101,6 @@ your "conf.py" file::
         # Location of link to source.
         # Options are "nav" (default), "footer" or anything else to exclude.
         'source_link_position': "nav",
-
-        # Bootswatch (http://bootswatch.com/) theme.
-        #
-        # Options are nothing (default) or the name of a valid theme
-        # such as "cosmo" or "sandstone".
-        #
-        # The set of valid themes depend on the version of Bootstrap
-        # that's used (the next config option).
-        #
-        # Currently, the supported themes are:
-        # - Bootstrap 2: https://bootswatch.com/2
-        # - Bootstrap 3: https://bootswatch.com/3
-        'bootswatch_theme': "united",
-
-        # Choose Bootstrap version.
-        # Values: "3" (default) or "2" (in quotes)
-        'bootstrap_version': "3",
     }
 
 Note for the navigation bar title that if you don't specify a theme option of
@@ -158,20 +108,6 @@ Note for the navigation bar title that if you don't specify a theme option of
 use the ``html_title`` or ``html_short_title`` values because by default those
 both contain version strings, which the navigation bar treats differently.
 
-Bootstrap Versions
-------------------
-The theme supports Bootstrap ``v2.3.2`` and ``v3.3.7`` via the
-``bootstrap_version`` theme option (of ``"2"`` or ``"3"``). Some notes
-regarding version differences:
-
-* Bootstrap 3 has dropped support for `sub-menus`_, so while supported by this
-  theme, they will not show up in site or page menus.
-* Internally, "navbar.html" is the Sphinx template used for Bootstrap v3 and
-  "navbar-2.html" is the template used for v2.
-* If you are unsure what to choose, choose Bootstrap **3**.  If you experience some
-  form of compatibility issues, then try and use Bootstrap 2.
-
-.. _`sub-menus`: http://stackoverflow.com/questions/18023493
 
 Extending "layout.html"
 -----------------------

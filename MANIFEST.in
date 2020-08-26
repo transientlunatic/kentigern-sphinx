@@ -3,7 +3,7 @@ include *.txt
 include *.rst
 
 # Non-python files.
-recursive-include sphinx_daniel_theme *
+recursive-include kentigern *
 recursive-exclude bootstrap *
 
 # Extraneous files.
