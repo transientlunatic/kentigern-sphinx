@@ -10,8 +10,8 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
       {% if theme_navbar_links %}
       {%- for link in theme_navbar_links %}
       <li class="nav-item">
@@ -30,24 +30,23 @@
       {% endblock %}
     </ul>
     
-    <li class="navbar-nav dropdown">
-      <a role="button"
-	 {% if versions|length>0 %}
-	 data-target="#"
-	class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-	{% else %}
-	class="nav-link"
-	{% endif %}
-	>
-	{{ version |e }} {{ release | e }}
-      </a>
+    <li class="nav-item dropdown">
       {% if versions|length>0 %}
-      <ul class="dropdown-menu">
+      <a role="button" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	{{ current_version }}
+      </a>
+      <div class="dropdown-menu">
 	{%- for name, url in versions %}
-	<li class="dropdown-item"><a href="{{ url }}">{{ name }}</a></li>
+	<a class="dropdown-item" href="{{ url }}">{{ name }}</a>
 	{%- endfor %}
-      </ul>
+      </div>
+      
+      {% else %}
+      <a role="button" data-target="#" class="nav-link">{% if version %}v{{ version |e }}{% else %}{{ release | e }}{% endif %}
+      </a>
       {% endif %}
+    </li>
+    
   </div>
 </nav>
 
