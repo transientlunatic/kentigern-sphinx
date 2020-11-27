@@ -11,6 +11,11 @@
 
 // @import url("./basic.css");
 
+
+body {
+    position: relative;
+}
+
 /*
 * Globals
 */
@@ -348,14 +353,24 @@ position: fixed;
 margin-left: -50px;
 border-left: 1px solid #eee;
 }
+
+/* #doc-container { */
+/*     position: relative; */
+/*     height: calc(100vh - 8rem); */
+/*     overflow-y: scroll; */
+/* } */
+
 .content {
-	 padding: 3%;
-	 }
+    padding: 3%;
+
+}
+
+
 .toc-left {
     border: none;
     border-right: 1px solid #eee;
     background-color: white;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     padding-right: 0.5rem !important;
     font-size: 85%;
 }
@@ -505,4 +520,73 @@ td code {
 h1 {
     border-bottom: 1px solid #EEE;
     padding-bottom: 2rem;
+}
+
+.figure {
+    max-width: 1000px !important;
+    float: right;
+    margin: 2rem;
+}
+
+.figure>.caption, .figure>.legend {
+    color: #444;
+}
+
+
+/* Table of contents */
+
+#localtoc-wrapper {
+    height: calc(100vh - 4rem);
+    position: sticky;
+    top: 4rem;
+    overflow-y: auto;
+}
+
+#globaltoc-wrapper {
+    overflow-y: auto;
+    position:   sticky;
+    top: 4rem;
+    height:     calc(100vh - 10rem);
+}
+
+/* Margin notes */
+
+div.sidebar {
+    color: #555555;
+    font-size: 80%;
+}
+
+div.sidebar p {
+    margin-bottom: 0.3rem;
+}
+
+p.sidebar-title {
+    font-weight: bold;
+    font-size: 105%;
+}
+p.sidebar-subtitle {
+    font-style: italic;
+}
+
+@media (max-width: 1199px) {
+    div.sidebar {
+	padding-left: 10%;
+	padding-right: 10%;
+    }
+}
+@media (min-width: 1200px) {
+    div.sidebar {
+	float: right;
+	clear: right;
+	margin-right: -30%;
+	position: relative;
+
+	width: 30%;
+	padding: 1%;
+    }
+}
+
+
+a.active {
+    font-weight: bold;
 }

@@ -1,1 +1,8 @@
-{{ toc }}
+{% if toc %}
+<div id="localtoc-wrapper">
+<h6>Contents</h6>
+{% endif %}
+  <div id="localtoc">
+    {{ toc }}
+  </div>
+</div>
