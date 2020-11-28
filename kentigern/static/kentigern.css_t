@@ -523,10 +523,26 @@ h1 {
 }
 
 .figure {
-    max-width: 1000px !important;
-    float: right;
+    max-width: calc(100vw-2rem) !important;
     margin: 2rem;
 }
+
+@media (max-width: 1199px) {
+    div.figure {
+	padding-left: 10%;
+	padding-right: 10%;
+    }
+}
+@media (min-width: 1200px) {
+    div.figure {
+	float: right;
+	clear: right;
+	margin-right: -30%;
+	position: relative;
+	padding: 1%;
+    }
+}
+
 
 .figure>.caption, .figure>.legend {
     color: #444;
