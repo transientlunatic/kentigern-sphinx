@@ -60,7 +60,7 @@ setup(
     ],
 
     install_requires=[
-        "setuptools",
+        "setuptools", "sphinx",
     ],
     entry_points = {
         'sphinx.html_themes': [

@@ -354,18 +354,19 @@ margin-left: -50px;
 border-left: 1px solid #eee;
 }
 
-/* #doc-container { */
-/*     position: relative; */
-/*     height: calc(100vh - 8rem); */
-/*     overflow-y: scroll; */
-/* } */
-
 .content {
     padding: 3%;
 
 }
 
 
+
+a.dropdown-item { 
+    color: black; 
+}
+
+
+/* Left TOC */
 .toc-left {
     border: none;
     border-right: 1px solid #eee;
@@ -381,24 +382,23 @@ border-left: 1px solid #eee;
     color: #aaa;
     font-size: 1.1rem;
 }
-a.dropdown-item { 
-    color: black; 
-}
 .toc-left a {
     color: gray;
     font-size: 0.875 rem;
 }
+
 .toc-left ul {
     padding-left: 1em;
 }
+
+
+/* Right TOC */
 .toc-right {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     border: none;
     border-left: 1px solid #eee;
     background-color: white;
     font-size: 85%;
-    right: 0;
-    position: fixed;
 }
 .toc-right ul {
     padding-left: 0.2rem;
@@ -535,18 +535,41 @@ h1 {
 
 /* Table of contents */
 
+@media (min-width: 1200px) {
 #localtoc-wrapper {
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 10rem);
     position: sticky;
     top: 4rem;
     overflow-y: auto;
 }
+}
 
-#globaltoc-wrapper {
-    overflow-y: auto;
-    position:   sticky;
-    top: 4rem;
-    height:     calc(100vh - 10rem);
+#localtoc .nav-link {
+    padding: 0.1rem;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-left: 0.2rem solid #28a745;
+    margin-left: -0.2rem;
+    padding-left: 0.3rem;
+}
+
+@media (max-width: 1200px) {
+    #globaltoc-wrapper{
+	display: none;
+    }
+}
+@media (min-width: 1200px) {
+    #dLabelGlobalToc {
+	display: none;
+    }
+    #globaltoc-wrapper {
+	overflow-y: auto;
+	position:   sticky;
+	top: 4rem;
+	height:     calc(100vh - 10rem);
+    }
 }
 
 /* Margin notes */
@@ -580,13 +603,14 @@ p.sidebar-subtitle {
 	clear: right;
 	margin-right: -30%;
 	position: relative;
-
 	width: 30%;
 	padding: 1%;
     }
 }
 
 
-a.active {
-    font-weight: bold;
+/* Version number */
+a.version-link {
+    color: white !important;
+    font-family: monospace;
 }

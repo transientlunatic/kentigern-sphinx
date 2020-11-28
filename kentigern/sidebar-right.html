@@ -1,0 +1,15 @@
+
+{% set page_toc = get_page_toc_object() %}
+<div id="localtoc-wrapper">
+  
+  {%- if page_toc | length >= 1 %}
+  <div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+  </div>
+  {%- endif %}
+  
+  <div id="localtoc">
+    {{ toc }}
+  </div>
+
+</div>

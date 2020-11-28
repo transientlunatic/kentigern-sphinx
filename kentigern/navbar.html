@@ -20,11 +20,6 @@
       {%- endfor %}
       {% endif %}
 
-      {#
-      {% block navbartoc %}
-      {% include "globaltoc.html" %}
-      {% endblock %}
-      #}
       
       {% block navbarextra %}
       {% endblock %}
@@ -32,17 +27,17 @@
     
     <li class="nav-item dropdown">
       {% if versions|length>0 %}
-      <a role="button" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a role="button" href="#" class="version-link nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	{{ current_version }}
       </a>
       <div class="dropdown-menu">
 	{%- for name, url in versions %}
-	<a class="dropdown-item" href="{{ url }}">{{ name }}</a>
+	<a class="dropdown-item version-link" href="{{ url }}">{{ name }}</a>
 	{%- endfor %}
       </div>
       
       {% else %}
-      <a role="button" data-target="#" class="nav-link">{% if version %}v{{ version |e }}{% else %}{{ release | e }}{% endif %}
+      <a role="button" data-target="#" class="version-link nav-link">{% if version %}v{{ version |e }}{% else %}{{ release | e }}{% endif %}
       </a>
       {% endif %}
     </li>
@@ -53,6 +48,11 @@
 {# Add document navigation on a second nav below the main one #}
 {% if theme_navbar_sidebarrel %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  
+  {% block navbartoc %}
+  {% include "globaltoc.html" %}
+  {% endblock %}
 
   
 {% block sidebarrel %}
