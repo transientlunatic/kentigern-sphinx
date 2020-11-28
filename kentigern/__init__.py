@@ -10,7 +10,7 @@ from sphinx.errors import ExtensionError
 import docutils
 
 
-VERSION = (0, 1, 6)
+VERSION = (0, 1, 7)
 
 __version__ = ".".join(str(v) for v in VERSION)
 __version_full__ = __version__
@@ -26,4 +26,3 @@ def setup(app):
     theme_path = get_html_theme_path()[0]
     
     app.add_html_theme("kentigern", theme_path)
-    app.connect("html-page-context", add_toctree_functions)
