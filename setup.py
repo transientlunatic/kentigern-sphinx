@@ -39,7 +39,7 @@ setup(
     version=__version__,
     use_2to3=True,
     description="A Sphinx Bootstrap derived Theme.",
-    long_description=read_file("README"),
+    #long_description=read_file("README"),
     url="https://code.daniel-williams.co.uk/kentigern",
 
     author="Daniel Williams",
