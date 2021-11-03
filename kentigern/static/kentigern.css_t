@@ -630,3 +630,7 @@ a.version-link {
     color: white !important;
     font-family: monospace;
 }
+
+dt.label{
+	float: left;
+	}
