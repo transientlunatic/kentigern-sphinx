@@ -414,9 +414,12 @@ a.dropdown-item {
     display: none;
 }
 
+/* Navigation */
+
 .section-nav  li {
     display: block;
 }
+
 .head {
     margin-top: 2rem;
 }
@@ -424,6 +427,8 @@ a.dropdown-item {
     font-weight: 500;
     
 }
+
+/* Tables */
 
 table.docutils {
     margin-left: 5%;
@@ -560,22 +565,6 @@ h1 {
 }
 }
 
-#localtoc .nav-link {
-    padding: 0.1rem;
-}
-
-.nav-link.active {
-    font-weight: bold;
-    border-left: 0.2rem solid #28a745;
-    margin-left: -0.2rem;
-    padding-left: 0.3rem;
-}
-
-@media (max-width: 1200px) {
-    #globaltoc-wrapper{
-	display: none;
-    }
-}
 @media (min-width: 1200px) {
     #dLabelGlobalToc {
 	display: none;
@@ -587,6 +576,28 @@ h1 {
 	height:     calc(100vh - 10rem);
     }
 }
+
+@media (max-width: 1200px) {
+    #globaltoc-wrapper{
+	display: none;
+    }
+}
+
+
+/* Local TOC */
+
+#localtoc .nav-link {
+    padding: 0.1rem;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    border-left: 0.2rem solid #28a745;
+    margin-left: -0.2rem;
+    padding-left: 0.3rem;
+}
+
+
 
 /* Margin notes */
 
