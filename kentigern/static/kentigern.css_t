@@ -601,12 +601,12 @@ h1 {
 
 /* Margin notes */
 
-div.sidebar {
+aside.sidebar p, div.sidebar {
     color: #555555;
     font-size: 80%;
 }
 
-div.sidebar p {
+aside.sidebar p, div.sidebar p {
     margin-bottom: 0.3rem;
 }
 
@@ -619,13 +619,13 @@ p.sidebar-subtitle {
 }
 
 @media (max-width: 1199px) {
-    div.sidebar {
+    aside.sidebar, div.sidebar {
 	padding-left: 10%;
 	padding-right: 10%;
     }
 }
 @media (min-width: 1200px) {
-    div.sidebar {
+    aside.sidebar, div.sidebar {
 	float: right;
 	clear: right;
 	margin-right: -30%;
