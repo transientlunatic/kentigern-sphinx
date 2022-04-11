@@ -41,13 +41,12 @@
 
 {% include "navbar.html" %}
 
-<div class="container-fluid"
-     id="doc-container">
+<div class="container-fluid" id="docs-container">
   
   <div class="row justify-content-md-left">
     <div class="col col-lg-2 order-1 order-xl-1 toc-left">
       {%- block sidebarleft %}
-      {% include "searchbox.html" %}
+      <!-- {% include "searchbox.html" %} -->
       {% include "sidebar-left.html" %}
       {% endblock %}
     </div>
@@ -58,7 +57,11 @@
       {% endblock %}
     </div>
     
-    <div class="col col-md-8 content order-2 order-xl-3 col-xl-6" >
+    <div class="col col-md-8 content order-2 order-xl-3 col-xl-7" >
+
+      {% include "bannerversion.html" %}
+      {% include "breadcrumbs.html" %}
+      
       {% block body %}
       
       {% endblock %}
