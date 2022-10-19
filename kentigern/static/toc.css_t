@@ -92,14 +92,21 @@
 /* Left TOC */
 .toc-left {
     border: none;
-    border-right: 1px solid #eee;
+    /* border-right: 1px solid #eee; */
     background-color: white;
-    /* margin-top: 2rem; */
+    margin-top: 4rem; 
     padding-right: 0.0rem !important;
     font-size: 85%;
+    padding-top: 1rem;
 }
+
+.globaltoc-wrapper {
+   padding-top: 1rem;   
+}
+
 .toc-left li {
     display: block;
+    line-height: 18pt;
 }
 .toc-left h2 {
     color: #aaa;
@@ -119,7 +126,7 @@
 .toc-right {
     /* margin-top: 2rem; */
     border: none;
-    border-left: 1px solid #eee;
+    /* border-left: 1px solid #eee; */
     background-color: white;
     font-size: 85%;
 }
@@ -135,4 +142,16 @@
 }
 .toc-title {
     display: none;
+}
+.toctitle {
+    text-size: 1.4 rem;
+}
+
+
+.globaltoc-wrapper > li a{
+    text-decoration: None;
+}
+
+.toc-left a {
+    text-decoration: none;
 }

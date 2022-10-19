@@ -10,7 +10,6 @@
  */
 
 @import url("./basic.css");
-
 /* Import TOC-specific styling. */
 @import "toc.css";
 /* Import admonition-specific styling. */
@@ -19,8 +18,57 @@
 @import "breadcrumbs.css";
 /* Import http-domain specific styling. */
 @import url("http.css");
-
+/* Code blocks */
 @import "code.css";
+
+/* Colors */
+
+
+/* $list_background: #1A1E26; */
+/* $row_background_dark: #343A40; */
+/* $dark_text: #A1A69C; */
+
+/* $white: #FFFFFF; */
+/* $list_background_light: #f2f2f2; */
+/* $light_text: #000000; */
+
+/* $kentigern_light_primary_color_old: #2a7ae2; */
+
+/* $kentigern_light_primary_color: #E24A33;  */
+/* $kentigern_light_primary_wash: #E24A33AA; */
+					 
+/* $kentigern_light_link_color: #2a7ae2; */
+/* $kentigern_light_visited_color: #205caa; */
+
+/* $kentigern_dark_primary_color: #BE81F0; */
+/* $kentigern_dark_primary_wash: #BE81F0AA; */
+
+/* $kentigern_dark_link_color: #BE81F0; */
+/* $kentigern_dark_visited_color: #A06DC9; */
+
+/* body[data-theme="dark"] { */
+/*     --color-text: #{$dark_text}; */
+/*     --kentigern-text: #{$dark_text}; */
+/*     --color-background: #{$list_background}; */
+/*     --color-row-background: #{$row_background_dark}; */
+/*     --kentigern-link: #{$kentigern_dark_link_color}; */
+/*     --kentigern-visited: #{$kentigern_dark_visited_color}; */
+/*     --kentigern-primary: #{$kentigern_dark_primary_color}; */
+/*     --bs-primary-rgb: #{$kentigern_dark_primary_color}; */
+/*     --kentigern-primary-translucent: #{$kentigern_dark_primary_wash}; */
+/* } */
+
+/* body { */
+/*     --color-text: #{$light_text}; */
+/*     --kentigern-text: #{$light_text}; */
+/*     --color-background: #{$list_background_light}; */
+/*     --color-row-background: #{$white}; */
+/*     --kentigern-link: #{$kentigern_light_link_color}; */
+/*     --kentigern-visited: #{$kentigern_light_visited_color}; */
+/*     --kentigern-primary: #{$kentigern_light_primary_color}; */
+/*     --kentigern-primary-translucent: #{$kentigern_light_primary_wash}; */
+/* } */
+
 
 
 body {
@@ -34,7 +82,7 @@ a {
     color: #28a745;
 }
 
-li {
+ul li {
     list-style: none;
 }
 
@@ -175,7 +223,7 @@ border-left: 1px solid #eee;
 
 .content {
     padding: 3%;
-
+    padding-top: 0;
 }
 
 
@@ -286,7 +334,7 @@ h1 {
 	overflow-y: auto;
 	position:   sticky;
 	top: 4rem;
-	height:     calc(100vh - 10rem);
+	height:     calc(100vh - 5rem);
     }
 }
 

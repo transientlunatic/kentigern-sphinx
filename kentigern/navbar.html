@@ -1,4 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+  <div class="container-fluid">
+  
   <a class="navbar-brand" href="{{ pathto(master_doc) }}">
     {%- block sidebarlogo %}
     {%- if logo %}<img src="{{ pathto('_static/' + logo, 1) }}">{%- endif %}
@@ -18,12 +21,12 @@
       </li>
       {%- endfor %}
       {% endif %}
-
       
       {% block navbarextra %}
       {% endblock %}
     </ul>
-    
+
+    <ul class="navbar-nav ">
     <li class="nav-item dropdown">
       {% if versions  %}
       <a role="button" href="#" class="version-link nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,26 +47,24 @@
       </a>
       {% endif %}
     </li>
+    </ul>
     
   </div>
 </nav>
 
+</div>
+
 {# Add document navigation on a second nav below the main one #}
 {% if theme_navbar_sidebarrel %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-  
-  {% block navbartoc %}
-  {% include "globaltoc.html" %}
+  <div class="container-fluid">
+  {% block sidebarrel %}
+  {% include "relations.html" %}
   {% endblock %}
 
-  
-{% block sidebarrel %}
-   {% include "relations.html" %}
-{% endblock %}
-
-{% if theme_source_link_position == "nav" %}
-    {% include "sourcelink.html" %}
-{% endif %}
+  {% if theme_source_link_position == "nav" %}
+  {% include "sourcelink.html" %}
+  {% endif %}
+  </div>
 </nav>
 {% endif %}

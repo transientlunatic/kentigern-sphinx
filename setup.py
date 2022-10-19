@@ -37,7 +37,6 @@ def read_file(name):
 setup(
     name="kentigern",
     version=__version__,
-    use_2to3=True,
     description="A Sphinx Bootstrap derived Theme.",
     #long_description=read_file("README"),
     url="https://code.daniel-williams.co.uk/kentigern",

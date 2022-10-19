@@ -33,7 +33,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Demo'
-copyright = u'2011-2016, Ryan Roemer'
+copyright = u'2020-2022 Daniel Williams'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -92,7 +92,7 @@ html_theme = 'kentigern'
 # documentation.
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': "Demo",
+    'navbar_title': "Kentigern",
 
     # Tab name for entire site. (Default: "Site")
     'navbar_site_name': "Site",

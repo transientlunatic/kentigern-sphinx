@@ -1,13 +1,12 @@
+{%- if parents %}
 <ul class="navbar-nav mr-auto">
-  {%- if parents %}
   <ol class="breadcrumb">
   {%- for parent in parents %}
     <li class="breadcrumb-item active" aria-current="page"><a href="{{ parent.href }}">{{ parent.title }}</a></li>
   {% endfor %}
   </ol>
-  {%- endif %}
 </ul>
-
+{%- endif %}
 
 <ul class="navbar-nav mr-auto">
 {%- if prev %}

@@ -91,19 +91,6 @@ Icons
 Icons are different in Bootstrap 2 and 3, so you will only see an
 icon below for the version of Bootstrap that we used to build these docs.
 
-Bootstrap 2
------------
-The following template HTML:
-
-.. code-block:: html
-
-    <span class="icon-star-empty"></span>
-
-translates to a neat star:
-
-.. raw:: html
-
-    <span class="icon-star-empty"></span>
 
 Bootstrap 3
 -----------
@@ -111,13 +98,13 @@ The following template HTML:
 
 .. code-block:: html
 
-    <span class="glyphicon glyphicon-star-empty"></span>
+		<i class="bi bi-star"></i>
 
 translates to a neat star:
 
 .. raw:: html
 
-    <span class="glyphicon glyphicon-star-empty"></span>
+	 <i class="bi bi-star"></i>
 
 Tables
 ======
@@ -132,7 +119,7 @@ Grid
 ----
 A "**bordered**" grid table:
 
-.. cssclass:: table-bordered
+.. cssclass:: table table-bordered
 
 +------------------------+------------+----------+----------+
 | Header1                | Header2    | Header3  | Header4  |
@@ -146,13 +133,13 @@ A "**bordered**" grid table:
 
 which uses the directive::
 
-    .. cssclass:: table-bordered
+    .. cssclass:: table table-bordered
 
 Simple
 ------
 A simple "**striped**" table:
 
-.. cssclass:: table-striped
+.. cssclass:: table table-striped
 
 =====  =====  =======
 H1     H2     H3
@@ -168,7 +155,7 @@ which uses the directive::
 
 And a "**hoverable**" table:
 
-.. cssclass:: table-hover
+.. cssclass:: table table-hover
 
 =====  =====  =======
 H1     H2     H3
