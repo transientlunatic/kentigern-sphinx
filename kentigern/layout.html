@@ -11,15 +11,14 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet"
+      href="{{ pathto('_static/kentigern-modern.css', 1) }}">
 <link rel="stylesheet"
       href='//fonts.googleapis.com/css?family=Lato:300,500%'/>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="{{ pathto('_static/darkmode.js', 1) }}"></script>
+<script src="{{ pathto('_static/node_modules/@popperjs/core/dist/umd/popper.min.js', 1) }}"></script>
+<script src="{{ pathto('_static/node_modules/bootstrap/dist/js/bootstrap.min.js', 1) }}"></script>
 {% endblock %}
-
-
-
 
 
 {# Silence the sidebars, relbars #}
@@ -31,7 +30,7 @@
 
 
 {% block body_tag %}
-  <body data-spy="scroll" data-target="#localtoc" data-offset="100" data-theme="light">
+  <body data-spy="scroll" data-target="#localtoc" data-offset="100">
 {%- endblock %}
 
 {%- block content %}
@@ -40,21 +39,21 @@
 
 <div class="container-fluid" id="docs-container">
   
-  <div class="row  justify-content-center">
-    <div class="col col-lg-2 order-1 order-xl-1 toc-left">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-2 order-3 order-xl-1 toc-left">
       {%- block sidebarleft %}
       <!-- {% include "searchbox.html" %} -->
       {% include "sidebar-left.html" %}
       {% endblock %}
     </div>
 
-    <div class="col col-md-2 order-3 order-xl-3 toc-right">
+    <div class="col-md-6 col-lg-2 order-2 order-xl-3 toc-right">
       {%- block sidebar1 %}
       {% include "sidebar-right.html" %}
       {% endblock %}
     </div>
     
-    <div class="col col-md-8 content order-2 order-xl-2 col-xl-6" >
+    <div class="col-md-12 col-lg-8 content order-1 order-xl-2 col-xl-6 pt-3">
 
       {% include "bannerversion.html" %}
       {% include "breadcrumbs.html" %}

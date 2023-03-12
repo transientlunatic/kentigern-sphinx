@@ -41,6 +41,10 @@ help:
 clean:
 	-rm -rf $(BUILDDIR)/*
 
+multiversion: 
+	sphinx-multiversion source $(BUILDDIR)/html
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo

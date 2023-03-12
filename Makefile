@@ -9,7 +9,7 @@ clean:
 		"demo/build" \
 		"sphinx_bootstrap_theme.egg-info" \
 
-demo:
+demo: css
 	cd demo && make html
 
 # PORT allows you to specify a different port if say
@@ -19,3 +19,7 @@ demo:
 PORT ?= 8000
 demo_server: demo
 	cd demo/build/html && python3 -m http.server $(PORT)
+
+css:
+	cd kentigern/static && npm install
+	cd kentigern/static && sass --load-path=node_modules kentigern-modern.scss kentigern-modern.css

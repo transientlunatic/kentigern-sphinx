@@ -17,7 +17,7 @@ import kentigern
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 # Disabled: , 'sphinx.ext.intersphinx'
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx.ext.viewcode', 'sphinx_multiversion']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -73,7 +73,7 @@ exclude_patterns = []
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'dracula'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -91,6 +91,7 @@ html_theme = 'kentigern'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+    'git': ['https://github.com/transientlunatic/kentigern-sphinx/', 'kentigern-sphinx', 'Github'],
     # Navigation bar title. (Default: ``project`` value)
     'navbar_title': "Kentigern",
 
@@ -114,7 +115,7 @@ html_theme_options = {
 
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
-    'globaltoc_depth': 2,
+    'globaltoc_depth': 1,
 
     # Include hidden TOCs in Site navbar?
     #
@@ -128,7 +129,7 @@ html_theme_options = {
     # HTML navbar class (Default: "navbar") to attach to <div> element.
     # For black navbar, do "navbar navbar-inverse"
     'navbar_class': "navbar",
-
+    'navbar_links': [["Hello", "http://www.example.com"]],
     # Fix navigation bar to top of page?
     # Values: "true" (default) or "false"
     'navbar_fixed_top': "true",
@@ -306,3 +307,7 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'http://docs.python.org/': None}
+
+smv_tag_whitelist = r'^n\d+\.\d+\.\d+.*$'
+smv_branch_whitelist = r'^.*$'
+smv_released_pattern = r'^tags/.*$'

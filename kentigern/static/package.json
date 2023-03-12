@@ -1,0 +1,21 @@
+{
+  "name": "kentigern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@font/nunito": "^1.0.3",
+    "@fontsource/nunito": "^4.5.12",
+    "@fontsource/source-code-pro": "^4.5.14",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.3.0-alpha1",
+    "bootstrap-icons": "^1.10.3",
+    "sass": "^1.59.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
