@@ -11,13 +11,14 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <!-- CSS only -->
-<link rel="stylesheet"
-      href="{{ pathto('_static/kentigern-modern.css', 1) }}">
-<link rel="stylesheet"
-      href='//fonts.googleapis.com/css?family=Lato:300,500%'/>
+<!-- <link rel="stylesheet" -->
+<!--       href="{{ pathto('_static/kentigern-modern.css', 1) }}"> -->
+<!-- <link rel="stylesheet" -->
+<!--       href='//fonts.googleapis.com/css?family=Lato:300,500%'/> -->
 <script src="{{ pathto('_static/darkmode.js', 1) }}"></script>
-<script src="{{ pathto('_static/node_modules/@popperjs/core/dist/umd/popper.min.js', 1) }}"></script>
-<script src="{{ pathto('_static/node_modules/bootstrap/dist/js/bootstrap.min.js', 1) }}"></script>
+<script src="{{ pathto('_static/dist/main.js', 1) }}"></script>
+<!-- <script src="{{ pathto('_static/node_modules/@popperjs/core/dist/umd/popper.min.js', 1) }}"></script> -->
+<!-- <script src="{{ pathto('_static/node_modules/bootstrap/dist/js/bootstrap.min.js', 1) }}"></script> -->
 {% endblock %}
 
 
@@ -69,10 +70,6 @@
 
 {%- block footer %}
   {% include "footer.html" %}
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"  crossorigin="anonymous"></script>
-
     <script>
     $(document).ready(function(){
 	$("#localtoc a").addClass("nav-link")
