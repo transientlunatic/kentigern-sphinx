@@ -24,6 +24,7 @@ Setting up and using the theme.
    sidebar
    subdir/index
    code
+   steps
 
 Development history and feature wish lists.
 

@@ -9,6 +9,14 @@
 // ---------------------------------------------------------------------------
 // Container
 // ---------------------------------------------------------------------------
+
+// Optional caption rendered above the step list
+.kentigern-steps__caption {
+  font-size: 0.9rem;
+  color: var(--bs-secondary-color);
+  margin-bottom: 0.75rem;
+}
+
 .kentigern-steps {
   margin: 1.5rem 0;
   counter-reset: kentigern-step;

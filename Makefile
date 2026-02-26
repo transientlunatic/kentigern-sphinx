@@ -8,6 +8,12 @@ clean:
 		"build" \
 		"demo/build" \
 		"sphinx_bootstrap_theme.egg-info" \
+		"theme-files/dist"
+	rm -f kentigern/static/kentigern-modern.css \
+		kentigern/static/kentigern.js \
+		kentigern/static/kentigern.js.LICENSE.txt \
+		kentigern/static/*.woff \
+		kentigern/static/*.woff2
 
 demo: css
 	cd demo && make html
@@ -21,5 +27,10 @@ demo_server: demo
 	cd demo/build/html && python3 -m http.server $(PORT)
 
 css:
-	cd kentigern/static && npm install
-	cd kentigern/static && sass --load-path=node_modules kentigern-modern.scss kentigern-modern.css
+	cd theme-files && npm install
+	cd theme-files && npm run build
+	cp theme-files/dist/kentigern-modern.css kentigern/static/kentigern-modern.css
+	cp theme-files/dist/kentigern.js kentigern/static/kentigern.js
+	cp theme-files/dist/kentigern.js.LICENSE.txt kentigern/static/kentigern.js.LICENSE.txt
+	cp theme-files/dist/*.woff theme-files/dist/*.woff2 kentigern/static/
+	cp theme-files/darkmode.js kentigern/static/darkmode.js
