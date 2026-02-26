@@ -8,11 +8,20 @@
       {% if theme_navbar_title -%}{{ theme_navbar_title|e }}{%- else -%}{{ project|e }}{%- endif -%}
     </a>
     <!-- End navbar brand -->
+    <!-- Contents button — opens global TOC offcanvas on mobile/tablet -->
+    <button class="btn btn-sm btn-outline-light me-2 d-xl-none"
+	    type="button"
+	    data-bs-toggle="offcanvas"
+	    data-bs-target="#globalTocOffcanvas"
+	    aria-controls="globalTocOffcanvas"
+	    aria-label="Open table of contents">
+      <i class="bi bi-list-ul"></i> Contents
+    </button>
     <!-- Navbar toggler -->
     <button class="navbar-toggler"
 	    type="button"
-	    data-toggle="collapse"
-	    data-target="#navbarSupportedContent"
+	    data-bs-toggle="collapse"
+	    data-bs-target="#navbarSupportedContent"
 	    aria-controls="navbarSupportedContent"
 	    aria-expanded="false"
 	    aria-label="Toggle navigation">
