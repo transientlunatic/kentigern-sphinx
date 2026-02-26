@@ -90,5 +90,9 @@ sphinx.builders.html.StandaloneHTMLBuilder.update_page_context = update_page_con
 def setup(app):
     """Setup."""
     theme_path = get_html_theme_path()[0]
-    
+
     app.add_html_theme("kentigern", theme_path)
+
+    # Auto-register bundled extensions so users get them for free.
+    from kentigern.ext import steps as _steps_ext
+    _steps_ext.setup(app)
