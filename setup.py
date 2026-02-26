@@ -2,7 +2,6 @@
 import os
 from setuptools import setup, find_packages
 
-from kentigern import __version__
 
 ###############################################################################
 # Environment and Packages.
@@ -36,11 +35,12 @@ def read_file(name):
 ###############################################################################
 setup(
     name="kentigern",
-    version=__version__,
-    description="A Sphinx Bootstrap derived Theme.",
+    description="A modern-looking Sphinx theme",
     #long_description=read_file("README"),
     url="https://code.daniel-williams.co.uk/kentigern",
-
+    # use_scm_version={"local_scheme": "no-local-version"},
+    # setup_requires=['setuptools_scm'],
+    version="0.4.1",
     author="Daniel Williams",
     author_email="mail@daniel-williams.co.uk",
 
@@ -57,10 +57,17 @@ setup(
         "Topic :: Internet",
         "Topic :: Software Development :: Documentation",
     ],
-
     install_requires=[
-        "setuptools", "sphinx",
+        "setuptools",
+        "sphinx",
     ],
+    package_data={
+        "kentigern": [
+            "theme.conf",
+            "*.html",
+            "static/*",
+        ],
+    },
     entry_points = {
         'sphinx.html_themes': [
             'kentigern = kentigern',

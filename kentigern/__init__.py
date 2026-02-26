@@ -11,7 +11,7 @@ from sphinx.errors import ExtensionError
 import sphinx.builders.html
 import docutils
 
-VERSION = (0, 4, 0)
+VERSION = (0, 4, 1)
 
 __version__ = ".".join(str(v) for v in VERSION)
 __version_full__ = __version__
