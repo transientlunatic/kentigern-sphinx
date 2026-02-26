@@ -49,11 +49,15 @@ class steps_container(nodes.General, nodes.Element):
     """Wrapper node for a numbered-step sequence."""
 
 
+class steps_caption(nodes.General, nodes.Element):
+    """Optional caption rendered above a ``steps_container``."""
+
+
 class step_node(nodes.General, nodes.Element):
     """A single step within a ``steps_container`` (or standalone)."""
 
 
-class step_title(nodes.TextElement):
+class step_title(nodes.General, nodes.Element):
     """The title line of a ``step_node``."""
 
 
@@ -67,6 +71,16 @@ def visit_steps_container_html(self, node):
 
 def depart_steps_container_html(self, node):
     self.body.append('</div>\n')
+
+
+def visit_steps_caption_html(self, node):
+    self.body.append('<p class="kentigern-steps__caption">' +
+                     self.encode(node.get('text', '')) + '</p>\n')
+    raise nodes.SkipNode
+
+
+def depart_steps_caption_html(self, node):
+    pass  # never called — SkipNode is raised in visit
 
 
 def visit_step_node_html(self, node):
@@ -87,11 +101,13 @@ def depart_step_node_html(self, node):
 
 
 def visit_step_title_html(self, node):
-    self.body.append('<p class="kentigern-step__title">')
+    self.body.append('<p class="kentigern-step__title">' +
+                     self.encode(node.get('text', '')) + '</p>\n')
+    raise nodes.SkipNode
 
 
 def depart_step_title_html(self, node):
-    self.body.append('</p>\n')
+    pass  # never called — SkipNode is raised in visit
 
 
 # ---------------------------------------------------------------------------
@@ -116,11 +132,12 @@ def _latex_depart_step_node(self, node):
 
 
 def _latex_visit_step_title(self, node):
-    self.body.append('\\item[')
+    self.body.append('\\item[' + node.get('text', '') + '] ')
+    raise nodes.SkipNode
 
 
 def _latex_depart_step_title(self, node):
-    self.body.append('] ')
+    pass
 
 
 # ---------------------------------------------------------------------------
@@ -128,17 +145,31 @@ def _latex_depart_step_title(self, node):
 # ---------------------------------------------------------------------------
 
 class StepsDirective(SphinxDirective):
-    """Container that wraps one or more ``step`` directives."""
+    """Container that wraps one or more ``step`` directives.
+
+    An optional argument becomes a caption rendered above the step list::
+
+        .. steps:: Prerequisites
+
+           .. step:: Install Python
+              ...
+    """
 
     has_content = True
     required_arguments = 0
-    optional_arguments = 0
+    optional_arguments = 1
+    final_argument_whitespace = True
 
     def run(self):
         self.assert_has_content()
+        result = []
+        if self.arguments:
+            caption = steps_caption(rawsource='', text=self.arguments[0])
+            result.append(caption)
         container = steps_container()
         self.state.nested_parse(self.content, self.content_offset, container)
-        return [container]
+        result.append(container)
+        return result
 
 
 class StepDirective(SphinxDirective):
@@ -160,8 +191,7 @@ class StepDirective(SphinxDirective):
         node = step_node()
 
         if self.arguments:
-            title = step_title(text=self.arguments[0])
-            title += nodes.Text(self.arguments[0])
+            title = step_title(rawsource='', text=self.arguments[0])
             node += title
 
         self.state.nested_parse(self.content, self.content_offset, node)
@@ -178,6 +208,12 @@ def setup(app):
     app.add_node(
         steps_container,
         html=(visit_steps_container_html, depart_steps_container_html),
+        latex=(_noop_visit, _noop_depart),
+        text=(_noop_visit, _noop_depart),
+    )
+    app.add_node(
+        steps_caption,
+        html=(visit_steps_caption_html, depart_steps_caption_html),
         latex=(_noop_visit, _noop_depart),
         text=(_noop_visit, _noop_depart),
     )
