@@ -61,6 +61,16 @@ setup(
     install_requires=[
         "setuptools", "sphinx",
     ],
+    package_data={
+        "kentigern": [
+            "theme.conf",
+            "*.html",
+            "static/*",
+        ],
+        "kentigern.ext": [
+            "*.py",
+        ],
+    },
     entry_points = {
         'sphinx.html_themes': [
             'kentigern = kentigern',

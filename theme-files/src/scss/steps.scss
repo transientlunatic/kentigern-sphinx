@@ -1,0 +1,113 @@
+// =============================================================================
+// kentigern/steps — numbered step-by-step tutorial layout
+//
+// Produces a vertical list of numbered steps joined by a connecting line.
+// Numbers are managed by a CSS counter (counter-reset on .kentigern-steps,
+// counter-increment on each .kentigern-step).
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Container
+// ---------------------------------------------------------------------------
+.kentigern-steps {
+  margin: 1.5rem 0;
+  counter-reset: kentigern-step;
+}
+
+// ---------------------------------------------------------------------------
+// Individual step row
+// ---------------------------------------------------------------------------
+.kentigern-step {
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+  counter-increment: kentigern-step;
+
+  // Remove bottom padding on the last step (no connector below it)
+  &:not(:last-child) {
+    padding-bottom: 0.5rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Left column: numbered circle + connector line
+// ---------------------------------------------------------------------------
+.kentigern-step__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 2.25rem; // fixed width = circle diameter
+
+  // Numbered circle via CSS ::before pseudo-element
+  &::before {
+    content: counter(kentigern-step);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background-color: $kentigern-primary;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
+    z-index: 1;
+  }
+}
+
+// Vertical connector line — fills the space under the circle.
+// Hidden for the last step via .kentigern-step:last-child.
+.kentigern-step__connector {
+  flex: 1;
+  width: 2px;
+  background-color: rgba($kentigern-primary, 0.25);
+  margin-top: 0.3rem;
+  min-height: 1rem;
+
+  .kentigern-step:last-child & {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Right column: optional title + body content
+// ---------------------------------------------------------------------------
+.kentigern-step__content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.2rem;
+  padding-bottom: 1.25rem;
+
+  .kentigern-step:last-child & {
+    padding-bottom: 0;
+  }
+}
+
+// Step title
+.kentigern-step__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+  color: $kentigern-primary;
+}
+
+// ---------------------------------------------------------------------------
+// Dark mode overrides
+// ---------------------------------------------------------------------------
+[data-theme="dark"] {
+  .kentigern-step__marker::before {
+    background-color: $kentigern_dark_primary_color;
+    color: #1a1a2e;
+  }
+
+  .kentigern-step__connector {
+    background-color: rgba($kentigern_dark_primary_color, 0.25);
+  }
+
+  .kentigern-step__title {
+    color: $kentigern_dark_primary_color;
+  }
+}
