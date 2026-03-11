@@ -67,6 +67,9 @@ setup(
             "*.html",
             "static/*",
         ],
+        "kentigern.ext": [
+            "*.py",
+        ],
     },
     entry_points = {
         'sphinx.html_themes': [

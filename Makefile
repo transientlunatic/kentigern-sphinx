@@ -7,10 +7,13 @@ clean:
 	rm -rf "dist" \
 		"build" \
 		"demo/build" \
-		"kentigern.egg-info" \
+		"sphinx_bootstrap_theme.egg-info" \
 		"theme-files/dist"
-	find kentigern/static \( -name "*.js" -o -name "*.css" -o -name "*.woff" -o -name "*.woff2" -o -name "*.LICENSE.txt" \) -delete
-	rm -rf "kentigern/static/fonts"
+	rm -f kentigern/static/kentigern-modern.css \
+		kentigern/static/kentigern.js \
+		kentigern/static/kentigern.js.LICENSE.txt \
+		kentigern/static/*.woff \
+		kentigern/static/*.woff2
 
 demo: css
 	cd demo && make html
@@ -28,6 +31,9 @@ wheel: css
 
 css:
 	cd theme-files && npm install
-	cd theme-files && npx webpack --mode production && cp -r dist/* ../kentigern/static
+	cd theme-files && npm run build
+	cp theme-files/dist/kentigern-modern.css kentigern/static/kentigern-modern.css
+	cp theme-files/dist/kentigern.js kentigern/static/kentigern.js
+	cp theme-files/dist/kentigern.js.LICENSE.txt kentigern/static/kentigern.js.LICENSE.txt
+	cp theme-files/dist/*.woff theme-files/dist/*.woff2 kentigern/static/ 2>/dev/null || true
 	cp theme-files/darkmode.js kentigern/static/darkmode.js
-

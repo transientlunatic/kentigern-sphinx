@@ -16,6 +16,7 @@ function addCopyButtons() {
         // Create copy button
         const button = document.createElement('button')
         button.className = 'copy-button'
+        button.setAttribute('type', 'button')
         button.textContent = 'Copy'
         button.setAttribute('aria-label', 'Copy code to clipboard')
 
@@ -93,7 +94,7 @@ function extractBashCommands(text) {
                 commandLines.push(command)
             }
         } else if (line.trim().startsWith('#')) {
-            commandLines.push(line)
+            commandLines.push(line.trim())
         }
         // Skip output lines
     })
