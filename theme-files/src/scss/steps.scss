@@ -105,17 +105,17 @@
 // ---------------------------------------------------------------------------
 // Dark mode overrides
 // ---------------------------------------------------------------------------
-[data-theme="dark"] {
+[data-bs-theme="dark"] {
   .kentigern-step__marker::before {
-    background-color: $kentigern_dark_primary_color;
+    background-color: $kentigern-dark-primary-color;
     color: #1a1a2e;
   }
 
   .kentigern-step__connector {
-    background-color: rgba($kentigern_dark_primary_color, 0.25);
+    background-color: rgba($kentigern-dark-primary-color, 0.25);
   }
 
   .kentigern-step__title {
-    color: $kentigern_dark_primary_color;
+    color: $kentigern-dark-primary-color;
   }
 }

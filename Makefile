@@ -35,5 +35,5 @@ css:
 	cp theme-files/dist/kentigern-modern.css kentigern/static/kentigern-modern.css
 	cp theme-files/dist/kentigern.js kentigern/static/kentigern.js
 	cp theme-files/dist/kentigern.js.LICENSE.txt kentigern/static/kentigern.js.LICENSE.txt
-	cp theme-files/dist/*.woff theme-files/dist/*.woff2 kentigern/static/
+	cp theme-files/dist/*.woff theme-files/dist/*.woff2 kentigern/static/ 2>/dev/null || true
 	cp theme-files/darkmode.js kentigern/static/darkmode.js
