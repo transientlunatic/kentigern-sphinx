@@ -7,9 +7,8 @@
 (() => {
   'use strict'
 
-  const storedTheme = localStorage.getItem('theme')
-
   const getPreferredTheme = () => {
+    const storedTheme = localStorage.getItem('theme')
     if (storedTheme) {
       return storedTheme
     }
@@ -42,7 +41,8 @@
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (storedTheme !== 'light' && storedTheme !== 'dark') {
+    const currentTheme = localStorage.getItem('theme')
+    if (currentTheme !== 'light' && currentTheme !== 'dark') {
       setTheme(getPreferredTheme())
     }
   })
