@@ -6,14 +6,16 @@ and the pydata sphinx theme.
 
 """
 import os
+from importlib.metadata import version, PackageNotFoundError
 from sphinx.errors import ExtensionError
 
 import sphinx.builders.html
 import docutils
 
-VERSION = (0, 5, 0)
-
-__version__ = ".".join(str(v) for v in VERSION)
+try:
+    __version__ = version("kentigern")
+except PackageNotFoundError:
+    __version__ = "unknown"
 __version_full__ = __version__
 
 def get_html_theme_path():
