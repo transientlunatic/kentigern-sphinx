@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -20,6 +23,14 @@ jobs:
 
       - name: Install build dependencies
         run: pip install build
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Build frontend assets
+        run: make css
 
       - name: Build wheel and sdist
         run: python -m build

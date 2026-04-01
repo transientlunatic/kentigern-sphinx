@@ -7,7 +7,6 @@ and the pydata sphinx theme.
 """
 import os
 from importlib.metadata import version, PackageNotFoundError
-from sphinx.errors import ExtensionError
 
 import sphinx.builders.html
 import docutils
