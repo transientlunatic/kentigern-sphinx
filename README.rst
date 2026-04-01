@@ -2,40 +2,72 @@
 Kentigern
 =========
 
-This Sphinx_ theme_ integrates the Bootstrap_ CSS and JavaScript framework with various layout options, hierarchical menu navigation, and mobile-friendly responsive design.
-It is designed to be configurable and extensible.
-The `kentigern` theme is forked from the `Sphinx Bootstrap Theme`_.
+Kentigern is a modern Sphinx_ HTML theme built on Bootstrap 5.
+It provides a three-column layout (site-wide table of contents / content /
+page-local table of contents), a dark-mode toggle with
+``prefers-color-scheme`` detection, code-copy buttons, and mobile-friendly
+responsive design via an off-canvas navigation drawer.
+
+Features
+========
+
+* **Bootstrap 5** — no jQuery dependency.
+* **Three-column layout** — global site TOC on the left, local page TOC on
+  the right, collapsing gracefully on smaller viewports.
+* **Dark mode** — follows the OS preference automatically; a toggle button
+  lets users override it.  The preference is persisted in ``localStorage``.
+* **Code copy buttons** — every code block gets a one-click copy button.
+* **Off-canvas mobile TOC** — the full site TOC is accessible on mobile via
+  a "Contents" button in the navbar.
+* **Accessibility** — skip-navigation link, ARIA labels, correct DOM order.
+* **Steps extension** — ``kentigern.ext.steps`` provides a ``steps``
+  directive for numbered step-by-step procedures.
+* **Webpack build pipeline** — all CSS and JS are compiled from SCSS/ES
+  source and bundled with webpack.
 
 Installation
 ============
-Installation from PyPI_ is fairly straightforward:
 
-1. Install the package::
+Install from PyPI_::
 
-      $ pip install kentigern
+    pip install kentigern
 
-2. Edit the "conf.py" configuration file to point to the bootstrap theme::
+Then add to your Sphinx ``conf.py``::
 
-      # At the top.
-      import kentigern
+    extensions = [
+        # optional — add the steps directive
+        "kentigern.ext.steps",
+    ]
 
-      # ...
+    html_theme = "kentigern"
 
-      # Activate the theme.
-      html_theme = 'kentigern'
-      html_theme_path = kentigern.get_html_theme_path()
+Configuration
+=============
 
+Kentigern supports the following ``html_theme_options`` keys:
 
-Licenses
-========
+``navbar_title``
+    Brand title shown in the navbar.  Defaults to the project name.
 
-Kentigern is licensed under the MIT_ license.
-Sphinx Bootstrap Theme is licensed under the MIT_ license.
+``navbar_links``
+    List of extra links to add to the navbar, as a list of
+    ``(title, url, external)`` triples.
 
-`Bootstrap v3.1.0+`_ is licensed under the MIT license.
+``globaltoc_depth``
+    Maximum depth to render in the global site TOC.  Defaults to ``-1``
+    (unlimited).
 
-.. _`Sphinx Bootstrap Theme`: https://github.com/ryan-roemer/sphinx-bootstrap-theme/
-.. _`MIT`: https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt
-.. _`Bootstrap v2`: https://github.com/twbs/bootstrap/blob/v2.3.2/LICENSE
-.. _`Bootstrap v3.1.0+`: https://github.com/twbs/bootstrap/blob/master/LICENSE
+Changelog
+=========
 
+See `HISTORY.rst <HISTORY.rst>`_ for the full version history.
+
+Licence
+=======
+
+Kentigern is released under the `MIT licence`_.
+
+.. _Sphinx: https://www.sphinx-doc.org/
+.. _Bootstrap 5: https://getbootstrap.com/
+.. _PyPI: https://pypi.org/project/kentigern/
+.. _MIT licence: LICENSE.txt
