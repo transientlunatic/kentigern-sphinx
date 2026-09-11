@@ -1,12 +1,19 @@
 #globaltoc-wrapper {
     ul {
-        margin-left: -1.5rem;
+        margin-left: 0;
+        padding-left: 0;
         padding-bottom: 0.5rem;
         line-height: 1.75rem;
     }
 
     .caption {
+        margin-top: 1.25rem;
         margin-bottom: 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
         span.caption-text {
             font-weight: bold;
         }
@@ -17,9 +24,16 @@
     margin-bottom: 0;
 }
 
+/* Global TOC entries. Each nested <ul> gets its own step of indentation
+   (rather than the previous negative-margin approach, which collapsed
+   the indent that distinguishes nesting depth) and a little vertical
+   breathing room per item so titles don't run together in large
+   projects with many pages. */
 .toctree-l1 {
     list-style: none;
     padding-left: 0;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
 
     a{
         text-decoration: none;
@@ -30,10 +44,29 @@
         color: $kentigern-emphasis-color;
     }
 
+    /* Highlight the page the reader is currently on, mirroring the
+       local TOC's ".nav-link.active" treatment below so both sidebars
+       share the same "you are here" language. */
+    &.current > a.current {
+        font-weight: 600;
+        color: $kentigern-primary;
+        border-left: 0.2rem solid $kentigern-primary;
+        margin-left: -0.2rem;
+        padding-left: 0.3rem;
+    }
+
     ul{
         list-style: none;
-        margin-left: -1rem;
+        padding-left: 0.9rem;
+        margin-left: 0;
         font-size: 80%;
+    }
+}
+
+[data-bs-theme="dark"] {
+    .toctree-l1.current > a.current {
+        color: $kentigern-dark-primary-color;
+        border-left-color: $kentigern-dark-primary-color;
     }
 }
 
@@ -79,7 +112,13 @@
 
 .nav-link.active {
     font-weight: bold;
-    border-left: 0.2rem solid #28a745;
+    border-left: 0.2rem solid $kentigern-primary;
     margin-left: -0.2rem;
     padding-left: 0.3rem;
+}
+
+[data-bs-theme="dark"] {
+    .nav-link.active {
+        border-left-color: $kentigern-dark-primary-color;
+    }
 }

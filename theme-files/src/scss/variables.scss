@@ -7,7 +7,12 @@ $bs-link-color-rgb: $kentigern-primary-rgb;
 
 $kentigern-navbar: $kentigern-primary;
 $kentigern-emphasis-color: $kentigern-secondary;
-$kentigern-menu-color: #495057;
+// Bootstrap's own theme-aware muted-text token, rather than a fixed hex
+// value: the old #495057 measured ~1.9:1 contrast against the dark-mode
+// body background (WCAG AA needs 4.5:1), making sidebar entries nearly
+// unreadable in dark mode. --bs-secondary-color tracks light/dark
+// automatically and keeps a very similar look in light mode.
+$kentigern-menu-color: var(--bs-secondary-color);
 
 $font-family-sans-serif: "nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-family-monospace:  "Source Code Pro",     SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
