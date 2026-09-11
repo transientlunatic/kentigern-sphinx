@@ -1,15 +1,54 @@
 #globaltoc-wrapper {
     ul {
-        margin-left: -1.5rem;
         padding-bottom: 0.5rem;
         line-height: 1.75rem;
     }
 
+    /* Only reset the outermost list's indent here, via the direct-child
+       combinator. An ID selector outranks the ".toctree-l1 ul" class
+       selector below on specificity alone, so if this reset matched
+       nested <ul>s too it would always win and silently cancel their
+       stepped indentation regardless of source order. */
+    > ul {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
     .caption {
+        margin-top: 1.25rem;
         margin-bottom: 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
         span.caption-text {
             font-weight: bold;
         }
+    }
+
+    /* A little vertical breathing room per entry, at every nesting
+       level, so titles don't run together in large projects with many
+       pages. */
+    li {
+        padding-top: 0.15rem;
+        padding-bottom: 0.15rem;
+    }
+
+    /* Highlight the page the reader is currently on, mirroring the
+       local TOC's ".nav-link.active" treatment below so both sidebars
+       share the same "you are here" language. Scoped to any nesting
+       depth, since Sphinx marks the current page's <li> as "current"
+       regardless of its toctree-lN level. Weight/border carry the
+       emphasis rather than a colour change on the text itself, since
+       $kentigern-primary only measures ~3.9:1 against a white
+       background (WCAG AA needs 4.5:1 for normal text; border/UI
+       accents only need 3:1, so it's fine there). */
+    li.current > a.current {
+        font-weight: 600;
+        border-left: 0.2rem solid $kentigern-primary;
+        margin-left: -0.2rem;
+        padding-left: 0.3rem;
     }
 }
 .toctitle {
@@ -17,6 +56,9 @@
     margin-bottom: 0;
 }
 
+/* Global TOC entries. Each nested <ul> gets its own step of indentation
+   (rather than the previous negative-margin approach, which collapsed
+   the indent that distinguishes nesting depth). */
 .toctree-l1 {
     list-style: none;
     padding-left: 0;
@@ -32,8 +74,15 @@
 
     ul{
         list-style: none;
-        margin-left: -1rem;
+        padding-left: 0.9rem;
+        margin-left: 0;
         font-size: 80%;
+    }
+}
+
+[data-bs-theme="dark"] {
+    #globaltoc-wrapper li.current > a.current {
+        border-left-color: $kentigern-dark-primary-color;
     }
 }
 
@@ -79,7 +128,13 @@
 
 .nav-link.active {
     font-weight: bold;
-    border-left: 0.2rem solid #28a745;
+    border-left: 0.2rem solid $kentigern-primary;
     margin-left: -0.2rem;
     padding-left: 0.3rem;
+}
+
+[data-bs-theme="dark"] {
+    .nav-link.active {
+        border-left-color: $kentigern-dark-primary-color;
+    }
 }

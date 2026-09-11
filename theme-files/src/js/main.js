@@ -15,4 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('localtoc')) {
         new bootstrap.ScrollSpy(document.body, { target: '#localtoc' })
     }
+
+    // Tell assistive tech which page is current in the global TOC.
+    // Uses querySelectorAll because the global TOC markup is duplicated
+    // (once in the mobile offcanvas, once in the desktop sidebar).
+    document.querySelectorAll('#globaltoc-wrapper li.current > a.current').forEach(function (el) {
+        el.setAttribute('aria-current', 'page')
+    })
 })
